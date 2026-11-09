@@ -1,0 +1,6 @@
+{
+  "name": "MediCal Systems - Don Phut Medical Device Calibration Platform",
+  "description": "Enterprise-level medical device calibration and maintenance management system for Don Phut District healthcare facilities with automated compliance reports, lifespan analytics, PDPA security, and Google Sheets integration.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Manrope:wght@600;700&amp;family=JetBrains+Mono:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2f3636",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#242b2b",
+                        "primary": "#47eaed",
+                        "background": "#0e1515",
+                        "secondary-container": "#3f465c",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "inverse-surface": "#dde4e3",
+                        "on-tertiary-fixed": "#001e2c",
+                        "inverse-primary": "#00696b",
+                        "surface-dim": "#0e1515",
+                        "surface": "#0e1515",
+                        "tertiary-container": "#4bc5ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "inverse-on-surface": "#2b3232",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-primary-container": "#005354",
+                        "surface-container-lowest": "#090f0f",
+                        "primary-container": "#00ced1",
+                        "on-primary": "#003738",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-primary-fixed": "#002020",
+                        "surface-container-low": "#161d1d",
+                        "on-surface": "#dde4e3",
+                        "primary-fixed-dim": "#2ddbde",
+                        "secondary": "#bec6e0",
+                        "on-primary-fixed-variant": "#004f51",
+                        "on-error": "#690005",
+                        "on-tertiary": "#00354a",
+                        "secondary-fixed": "#dae2fd",
+                        "tertiary-fixed-dim": "#7bd0ff",
+                        "surface-container": "#1a2121",
+                        "on-tertiary-container": "#004f6d",
+                        "outline": "#859493",
+                        "on-secondary-container": "#adb4ce",
+                        "surface-bright": "#333b3a",
+                        "on-background": "#dde4e3",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#2ddbde",
+                        "primary-fixed": "#5af8fb",
+                        "surface-container-highest": "#2f3636",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#c4e7ff",
+                        "on-secondary": "#283044",
+                        "on-surface-variant": "#bac9c9",
+                        "tertiary": "#a4dcff",
+                        "outline-variant": "#3b4949"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar_width": "260px",
+                        "container_padding": "2rem",
+                        "gutter": "1.5rem",
+                        "stack_sm": "0.5rem",
+                        "sidebar_collapsed": "80px",
+                        "stack_md": "1rem"
+                    },
+                    "fontFamily": {
+                        "status-number": ["JetBrains Mono"],
+                        "headline-md": ["Manrope"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "status-number": ["14px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(47, 54, 54, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base">
+<!-- Sidebar Navigation -->
+<aside class="w-sidebar_width h-screen fixed left-0 top-0 z-40 bg-surface-variant/40 backdrop-blur-xl border-r border-white/15 shadow-xl flex flex-col h-full py-6 px-4">
+<div class="mb-10 px-2">
+<span class="font-display-lg text-headline-md text-primary tracking-tight">MediCal</span>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 text-primary bg-primary/10 font-bold border-r-2 border-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant/70 hover:text-primary hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="biomedical">biotech</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant/70 hover:text-primary hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="event_repeat">event_repeat</span>
+<span>Calibration</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant/70 hover:text-primary hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span>Compliance</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/10 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-primary/20">
+<img alt="Dr. Aris Thorne" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a male biomedical engineer with glasses in a clinical setting. The lighting is cool-toned and crisp, emphasizing a high-tech medical environment. He wears a clean white lab coat over a professional shirt. The background is softly blurred, showing glimpses of medical monitoring equipment and teal digital interfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALox2wU9ZctwkYyZ9re_x2cM342MDjXCT2-OEac6iDdVmi7g17UqGcP-LI-Jbkf1nrmdOZOecBIjeoegjTVDDhWoB-c3BOBq0cpjwYuvJX8Pu2SI4PjyC-8bXI_iohgALp9_QB6jjuqwD9EEUMooVMHh_7I3pEo009o00w7Xci4pnoX2F9S3gHaeW-2D5yMYJFBSH_IP2q6-xYbGaF0e_P5qLqAVyhYHWF1y-CZqWIuWDB7KvM3lMHTi4gn6wIG50e45XHw2SrchFR"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Dr. Aris Thorne</p>
+<p class="text-xs text-on-surface-variant">Lead Engineer</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-sidebar_width min-h-screen p-container_padding">
+<!-- Header -->
+<header class="flex items-center justify-between mb-8">
+<div>
+<h1 class="font-headline-md text-headline-md text-primary">System Overview</h1>
+<p class="text-on-surface-variant mt-1">Real-time biomedical asset tracking and compliance status.</p>
+</div>
+<div class="flex gap-4">
+<div class="relative group">
+<button class="bg-surface-variant/40 hover:bg-surface-variant/60 border border-white/10 text-on-surface px-4 py-2 rounded-lg flex items-center gap-2 transition-all active:scale-95" id="export-btn">
+<span class="material-symbols-outlined text-sm" data-icon="ios_share">ios_share</span>
+<span class="font-label-caps text-label-caps">Export PDF</span>
+<span class="material-symbols-outlined text-xs">expand_more</span>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute right-0 mt-2 w-64 glass-panel rounded-xl shadow-2xl py-2 z-50 hidden group-focus-within:block">
+<button class="w-full text-left px-4 py-2 hover:bg-white/5 transition-colors flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">description</span>
+<span class="text-sm">Download Full Summary</span>
+</button>
+<button class="w-full text-left px-4 py-2 hover:bg-white/5 transition-colors flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-sm">error</span>
+<span class="text-sm">Export Expired Only</span>
+</button>
+<button class="w-full text-left px-4 py-2 hover:bg-white/5 transition-colors flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">calendar_today</span>
+<span class="text-sm">Calibration Schedule (60 Days)</span>
+</button>
+</div>
+<!-- Loading State (Hidden by default) -->
+<div class="hidden absolute -bottom-6 right-0 flex items-center gap-2 text-[10px] text-primary/80 animate-pulse" id="export-loading">
+<span class="material-symbols-outlined text-xs">sync</span>
+<span class="font-label-caps">Generating PDF...</span>
+</div>
+</div>
+<button class="bg-primary-container hover:bg-primary text-on-primary font-bold px-6 py-2 rounded-lg flex items-center gap-2 shadow-[0_0_20px_rgba(71,234,237,0.2)] transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>New Audit</span>
+</button>
+</div>
+</header>
+<!-- Summary Stats Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+<!-- Normal Status Card -->
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden group hover:border-primary/40 transition-colors">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Normal Status</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">1,248</span>
+<span class="text-on-surface-variant text-sm">Assets</span>
+</div>
+<div class="mt-4 flex items-center gap-2 text-xs text-primary/80">
+<span class="w-2 h-2 rounded-full bg-primary pulse-dot"></span>
+<span>All systems operational</span>
+</div>
+</div>
+<!-- Pending Calibration Card -->
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden group hover:border-tertiary/40 transition-colors">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="schedule">schedule</span>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Pending Calibration</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-tertiary">84</span>
+<span class="text-on-surface-variant text-sm">&lt; 60 Days</span>
+</div>
+<div class="mt-4 h-1.5 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-3/4 rounded-full shadow-[0_0_10px_rgba(75,197,255,0.3)]"></div>
+</div>
+</div>
+<!-- Expired Assets Card -->
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden group hover:border-error/40 transition-colors">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="warning">warning</span>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="error_outline">error_outline</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Expired Assets</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-error">12</span>
+<span class="text-on-surface-variant text-sm">Critical</span>
+</div>
+<div class="mt-4 flex items-center gap-2 text-xs text-error">
+<span class="w-2 h-2 rounded-full bg-error pulse-dot"></span>
+<span>Immediate Action Required</span>
+</div>
+</div>
+</section>
+<!-- Urgent Tasks Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-xl text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="list_alt">list_alt</span>
+                    Urgent Maintenance Tasks
+                </h2>
+<a class="text-primary hover:underline font-label-caps text-label-caps" href="#">View All Inventory</a>
+</div>
+<div class="glass-panel rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-white/5 border-b border-white/10">
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Asset ID</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Equipment Name</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Department</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Last Service</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Table Row 1 -->
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-status-number text-status-number text-primary">#CRD-9921</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-medium">MAC 5500 Resting ECG System</span>
+<span class="text-xs text-on-surface-variant">GE HealthCare • S/N: 45091</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Cardiology Unit A</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error/10 text-error text-xs font-bold border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Expired
+                                </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-status-number text-status-number text-primary">#LAB-1024</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-medium">Centrifuge 5425 R</span>
+<span class="text-xs text-on-surface-variant">Eppendorf • S/N: 22841</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Hematology Lab</td>
+<td class="px-6 py-4 text-on-surface-variant">Jan 05, 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-xs font-bold border border-tertiary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                    Pending
+                                </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-status-number text-status-number text-primary">#ICU-4412</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-medium">IntelliVue MX800 Monitor</span>
+<span class="text-xs text-on-surface-variant">Philips • S/N: 99102</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Intensive Care Unit</td>
+<td class="px-6 py-4 text-on-surface-variant">Dec 20, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Normal
+                                </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-status-number text-status-number text-primary">#CRD-5501</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-medium">Affiniti 70 Ultrasound</span>
+<span class="text-xs text-on-surface-variant">Philips • S/N: 71203</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Cardiology Unit B</td>
+<td class="px-6 py-4 text-on-surface-variant">Nov 15, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error/10 text-error text-xs font-bold border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Expired
+                                </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-white/5 border-t border-white/10 flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">Showing 4 of 12 urgent tasks</span>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-white/10 rounded disabled:opacity-30"><span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span></button>
+<button class="p-1 hover:bg-white/10 rounded"><span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Layout Secondary Section -->
+<section class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Calibration Trend (Bento Style) -->
+<div class="lg:col-span-2 glass-panel p-6 rounded-xl flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-lg">Compliance Health</h3>
+<select class="bg-surface-container-low border border-white/10 rounded-lg text-xs font-label-caps p-2 focus:ring-1 focus:ring-primary outline-none">
+<option>Last 6 Months</option>
+<option>Last 12 Months</option>
+</select>
+</div>
+<div class="flex-1 flex items-end gap-3 min-h-[200px] pt-4">
+<!-- Simple CSS Graph Representation -->
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all h-[60%] group-hover:h-[65%]"></div>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">SEP</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all h-[75%] group-hover:h-[80%]"></div>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">OCT</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all h-[40%] group-hover:h-[45%]"></div>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">NOV</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all h-[90%] group-hover:h-[95%]"></div>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">DEC</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all h-[85%] group-hover:h-[88%]"></div>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">JAN</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all h-[95%] group-hover:h-full"></div>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">FEB</span>
+</div>
+</div>
+</div>
+<!-- Quick Audit Info -->
+<div class="glass-panel p-6 rounded-xl space-y-4">
+<h3 class="font-headline-md text-lg">Upcoming Audit</h3>
+<div class="bg-primary/5 border border-primary/20 p-4 rounded-lg">
+<p class="text-xs text-primary font-label-caps mb-1">External Quality Audit</p>
+<p class="text-on-surface font-bold">ISO 13485:2016 Review</p>
+<p class="text-on-surface-variant text-sm mt-2">Scheduled in <span class="text-primary">14 Days</span></p>
+</div>
+<div class="space-y-3 pt-2">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">Device Calibration Rate</span>
+<span class="font-bold">92%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-lowest rounded-full">
+<div class="h-full bg-primary w-[92%] rounded-full"></div>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">Documentation Completion</span>
+<span class="font-bold">88%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-lowest rounded-full">
+<div class="h-full bg-tertiary w-[88%] rounded-full"></div>
+</div>
+</div>
+<button class="w-full mt-4 bg-transparent border border-primary/30 hover:bg-primary/10 text-primary py-2 rounded-lg font-bold transition-all">
+                    Prepare Audit Pack
+                </button>
+</div>
+</section>
+</main>
+</body></html>

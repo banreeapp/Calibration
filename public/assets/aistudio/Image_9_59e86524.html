@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#dde4e3",
+                    "primary-fixed-dim": "#2ddbde",
+                    "on-primary-container": "#005354",
+                    "secondary-container": "#3f465c",
+                    "surface-container-lowest": "#090f0f",
+                    "on-primary": "#003738",
+                    "primary-container": "#00ced1",
+                    "on-primary-fixed": "#002020",
+                    "surface-container-low": "#161d1d",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "inverse-primary": "#00696b",
+                    "tertiary-container": "#4bc5ff",
+                    "on-secondary-fixed": "#131b2e",
+                    "inverse-on-surface": "#2b3232",
+                    "surface": "#0e1515",
+                    "surface-dim": "#0e1515",
+                    "background": "#0e1515",
+                    "primary": "#47eaed",
+                    "secondary-container": "#3f465c",
+                    "surface-variant": "#2f3636",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#242b2b",
+                    "on-tertiary-fixed": "#001e2c",
+                    "inverse-surface": "#dde4e3",
+                    "on-tertiary-fixed-variant": "#004c69",
+                    "on-surface-variant": "#bac9c9",
+                    "surface-container-highest": "#2f3636",
+                    "error-container": "#93000a",
+                    "on-secondary": "#283044",
+                    "tertiary-fixed": "#c4e7ff",
+                    "outline-variant": "#3b4949",
+                    "tertiary": "#a4dcff",
+                    "on-error-container": "#ffdad6",
+                    "surface-tint": "#2ddbde",
+                    "primary-fixed": "#5af8fb",
+                    "surface-container": "#1a2121",
+                    "surface-bright": "#333b3a",
+                    "on-background": "#dde4e3",
+                    "on-tertiary-container": "#004f6d",
+                    "on-secondary-container": "#adb4ce",
+                    "outline": "#859493",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#004f51",
+                    "on-tertiary": "#00354a",
+                    "secondary": "#bec6e0",
+                    "tertiary-fixed-dim": "#7bd0ff",
+                    "secondary-fixed": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar_width": "260px",
+                    "container_padding": "2rem",
+                    "stack_sm": "0.5rem",
+                    "gutter": "1.5rem",
+                    "stack_md": "1rem",
+                    "sidebar_collapsed": "80px"
+            },
+            "fontFamily": {
+                    "status-number": ["JetBrains Mono"],
+                    "label-caps": ["JetBrains Mono"],
+                    "display-lg": ["Manrope"],
+                    "body-base": ["Inter"],
+                    "headline-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "status-number": ["14px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(47, 54, 54, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1515;
+            color: #dde4e3;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-base text-body-base min-h-screen">
+<!-- Top Navigation -->
+<header class="w-full h-20 fixed top-0 right-0 z-30 bg-surface/40 backdrop-blur-md border-b border-white/15 shadow-sm flex items-center justify-between px-6">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="menu">menu</button>
+<h1 class="font-display-lg text-headline-md tracking-tight text-primary">MediCal Systems</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="hidden md:block font-label-caps text-label-caps text-on-surface-variant">Dr. Aris Thorne</span>
+<div class="w-10 h-10 rounded-full border border-primary/30 overflow-hidden">
+<img alt="Technician Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a biomedical engineer in a clean, modern medical facility. The lighting is cool-toned with subtle teal highlights reflecting the tech-enabled atmosphere. He wears a professional white lab coat, and the background is softly blurred, showing high-end medical equipment in a dark-mode surgical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTlWwa_RcU-Eww27HTkGFjoG8wVMpj43dW-J8huFIkG2mgPS___KaEh7pDwSXVuT2L4aRdSOtp468Y8au3UIA4etWaxmxzUDtGQslI-37A2KJ3Dd3HFyuHTF6555n1pnhrMFTHfUj_Tfc3-EZsmEpA9T3T8P3zB-TDm-3-0ID2MX_LFs22ly5a3xy01TcVP_QGpANvXcEyhQynpwLgGQNNYiJmyw7ktb0wUxmPo7WNJDouFgxLXuVs94UQhP7pBKrwdPqSoSnlShPL"/>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Hidden on mobile by design, shown on md screens) -->
+<aside class="hidden md:flex w-sidebar_width h-screen fixed left-0 top-0 z-40 bg-surface-variant/40 backdrop-blur-xl border-r border-white/15 shadow-xl flex-col py-6 px-4">
+<div class="mb-10 px-2">
+<div class="text-primary font-display-lg text-headline-md mb-1">MediCal</div>
+<div class="text-on-surface-variant text-xs font-label-caps opacity-60">ADMINISTRATION PORTAL</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-base text-body-base">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-primary bg-primary/10 font-bold border-r-2 border-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="biomedical">biotech</span>
+<span class="font-body-base text-body-base">Inventory</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="event_repeat">event_repeat</span>
+<span class="font-body-base text-body-base">Calibration</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-body-base text-body-base">Compliance</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg text-on-surface-variant hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-base text-body-base">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/10 flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<div class="font-bold text-sm text-on-surface">Dr. Aris Thorne</div>
+<div class="text-xs text-on-surface-variant opacity-70">Lead Bio Engineer</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-12 px-6 md:ml-sidebar_width min-h-screen max-w-5xl mx-auto">
+<!-- Breadcrumb & Header -->
+<div class="mb-8">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Inventory</span>
+<span class="opacity-30">/</span>
+<span class="text-primary font-medium">Add New Device</span>
+</div>
+<h2 class="font-display-lg text-headline-md text-primary tracking-tight">Register Medical Instrument</h2>
+<p class="text-on-surface-variant opacity-70 mt-1">Complete the clinical equipment profile for the facility database.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Main Form Card -->
+<div class="lg:col-span-2 glass-panel rounded-xl p-6 shadow-2xl">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Device Name -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase">Device Name</label>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary/50 transition-all placeholder:opacity-30" placeholder="e.g. Philips IntelliVue MX550" type="text"/>
+</div>
+<!-- Model -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase">Model Number</label>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary/50 transition-all placeholder:opacity-30" placeholder="MD-200X-B" type="text"/>
+</div>
+<!-- Serial Number -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase">Serial Number (SN)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary/50 transition-all placeholder:opacity-30" placeholder="SN-882194-Z" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-40 text-lg" data-icon="barcode_scanner">barcode_scanner</span>
+</div>
+</div>
+<!-- Department -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase">Department</label>
+<select class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary/50 transition-all appearance-none">
+<option>Cardiology Unit</option>
+<option>Intensive Care (ICU)</option>
+<option>Radiology</option>
+<option>Pediatrics</option>
+<option>Emergency Room</option>
+</select>
+</div>
+<!-- Last Calibration Date -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase">Last Calibration Date</label>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary/50 transition-all" type="date"/>
+</div>
+<!-- Warranty Expiry (Extra context) -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase">Next Scheduled Review</label>
+<div class="flex items-center bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface-variant gap-2 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span>Auto-calculated from Last Cal Date</span>
+</div>
+</div>
+</div>
+<!-- File Upload Area -->
+<div class="pt-4">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase mb-3">Calibration Certificates (PDF)</label>
+<div class="w-full border-2 border-dashed border-primary/20 rounded-xl p-8 flex flex-col items-center justify-center bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-4xl mb-3 group-hover:scale-110 transition-transform" data-icon="upload_file">upload_file</span>
+<div class="text-on-surface font-medium">Drag &amp; drop certification files</div>
+<div class="text-on-surface-variant text-sm opacity-60">Maximum file size: 15MB</div>
+<button class="mt-4 px-6 py-2 border border-primary text-primary rounded-lg text-sm font-medium hover:bg-primary hover:text-black transition-all active:scale-95" type="button">Browse Files</button>
+</div>
+</div>
+<!-- Submit Actions -->
+<div class="flex flex-col sm:flex-row items-center gap-4 pt-6 border-t border-white/10">
+<button class="w-full sm:w-auto px-10 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg shadow-lg hover:shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all" type="submit">
+                            Save Medical Device
+                        </button>
+<button class="w-full sm:w-auto px-10 py-3 border border-white/10 text-on-surface-variant font-medium rounded-lg hover:bg-white/5 transition-all" type="button">
+                            Cancel
+                        </button>
+</div>
+</form>
+</div>
+<!-- Side Helper Info -->
+<div class="space-y-6">
+<!-- Status Badge Preview -->
+<div class="glass-panel rounded-xl p-5 border-l-4 border-primary">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<h4 class="font-bold text-on-surface">Registration Guide</h4>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                        Ensure the Serial Number matches the physical tag on the instrument rear panel. PDF certificates must be digitally signed by a certified technician.
+                    </p>
+</div>
+<!-- Recent Activity/Context -->
+<div class="glass-panel rounded-xl p-5 overflow-hidden relative">
+<div class="absolute -right-4 -bottom-4 text-primary opacity-5">
+<span class="material-symbols-outlined text-9xl" data-icon="biomedical">biotech</span>
+</div>
+<h4 class="font-bold text-on-surface mb-4">Device Preview</h4>
+<div class="aspect-video bg-surface-container-low rounded-lg mb-4 flex items-center justify-center overflow-hidden border border-white/5">
+<img alt="Medical Monitor Preview" class="w-full h-full object-cover opacity-60" data-alt="A professional medical monitoring system displaying vital heart rate graphs in a low-light clinical setting. The screen glows with soft teal and blue light against a dark, minimalist hospital background. The atmosphere is quiet, precise, and highly sophisticated, matching the medical-tech design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBghcNfbn1LCIsV2vvFw1yR-h7Rpl4qYNpUUkYJNASex9eVX9VCQZobo5rZo-61o6qTNNytE6wIURPgi_MKpyRh-VXaiLw_7o2eEOB_UPL02CYp2TQaokI3txJ1z0OCf9-PasDBSPLphvOQxAWpylRt-2QjpTOLJpCwIIH-e0S505CCwqpd9TK-w9PcKY8zcj4QZlS714jYCBSrUcZhZsKSnW9Lm8g1A2FYjgyjJTOUzvQV0b7XCIigAIoHoQoEowRQYGA8K5WDZ9R"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label-caps opacity-60">
+<span>Compliance Status</span>
+<span class="text-primary">PENDING APPROVAL</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-tertiary w-1/3"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-xl border-t border-white/10 z-50 flex items-center justify-around px-4">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-label-caps">Dash</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="biomedical">biotech</span>
+<span class="text-[10px] font-label-caps">Inventory</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="event_repeat">event_repeat</span>
+<span class="text-[10px] font-label-caps">Cals</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-label-caps">Setup</span>
+</button>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-tertiary/5 blur-[120px] rounded-full"></div>
+</div>
+</body></html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediCal Systems - Calibration Management</title>
+<!-- Tailwind CSS & Google Fonts -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<style>
+    :root {
+      --sidebar-width: 280px;
+    }
+    body { font-family: 'Manrope', sans-serif; }
+    
+    /* Glassmorphism utility */
+    .glass {
+      background: rgba(14, 21, 21, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    
+    /* Sidebar Transitions */
+    #sidebar {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    @media (max-width: 1024px) {
+      #sidebar.closed {
+        transform: translateX(-100%);
+      }
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 206, 209, 0.2);
+      border-radius: 10px;
+    }
+  </style>
+</link></head>
+<body class="bg-[#0e1515] text-white overflow-x-hidden">
+<!-- Sidebar Overlay (Mobile) -->
+<div class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<!-- Navigation Drawer -->
+<aside class="fixed top-0 left-0 h-screen w-[var(--sidebar-width)] z-50 glass border-r border-white/10 flex flex-col py-6 px-4" id="sidebar">
+<!-- Brand Logo -->
+<div class="flex items-center gap-3 px-2 mb-10">
+<div class="w-10 h-10 bg-cyan-500 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(0,206,209,0.4)]">
+<span class="material-symbols-outlined text-black font-bold">biomedical</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-cyan-400">MediCal</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] opacity-50">Systems</p>
+</div>
+</div>
+<!-- Navigation Items -->
+<nav class="flex-1 space-y-2">
+<a class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl transition-all active bg-cyan-500/10 text-cyan-400 font-bold border-r-2 border-cyan-500" href="#" onclick="loadPage('Dashboard')">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-gray-400 hover:bg-white/5 hover:text-white" href="#" onclick="loadPage('Inventory')">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-gray-400 hover:bg-white/5 hover:text-white" href="#" onclick="loadPage('Calibration')">
+<span class="material-symbols-outlined">event_repeat</span>
+<span>Calibration</span>
+</a>
+<a class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-gray-400 hover:bg-white/5 hover:text-white" href="#" onclick="loadPage('Compliance')">
+<span class="material-symbols-outlined">fact_check</span>
+<span>Compliance</span>
+</a>
+</nav>
+<!-- User Profile & Settings -->
+<div class="mt-auto pt-6 border-t border-white/10">
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-gray-400 hover:bg-white/5 mb-4" href="#" onclick="loadPage('Settings')">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<div class="flex items-center gap-3 px-2">
+<img alt="Avatar" class="w-10 h-10 rounded-full border border-cyan-500/30" src="https://placeholder.pics/svg/300"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Dr. Aris Thorne</p>
+<p class="text-[10px] text-gray-500 uppercase">Admin Tier-4</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:ml-[var(--sidebar-width)] min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="h-20 glass sticky top-0 z-30 border-b border-white/10 flex items-center justify-between px-6 lg:px-10">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-gray-400 hover:text-white" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-xl font-bold" id="pageTitle">Dashboard</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2.5 rounded-full bg-white/5 text-gray-400 hover:text-cyan-400 transition-colors" id="themeToggle">
+<span class="material-symbols-outlined" id="themeIcon">dark_mode</span>
+</button>
+<div class="w-px h-6 bg-white/10 mx-1"></div>
+<div class="relative group">
+<span class="material-symbols-outlined text-gray-400 cursor-pointer">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-[#0e1515]"></span>
+</div>
+</div>
+</header>
+<!-- Content Container -->
+<div class="p-6 lg:p-10 flex-1" id="content">
+<!-- DASHBOARD.HTML CONTENT LOADED HERE VIA google.script.run -->
+<div class="flex flex-col items-center justify-center h-full opacity-20">
+<span class="material-symbols-outlined text-6xl mb-4">clinical_notes</span>
+<p>Loading medical systems data...</p>
+</div>
+</div>
+</main>
+<!-- Load Theme Logic -->
+<?!= include('Theme'); ?>
+</body>
+</html>

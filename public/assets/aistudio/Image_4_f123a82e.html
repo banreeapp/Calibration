@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Settings | MediCal Systems</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(47, 54, 54, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .glass-panel-heavy {
+            background: rgba(47, 54, 54, 0.6);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        body {
+            background-color: #0e1515;
+            color: #dde4e3;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#dde4e3",
+                    "primary-fixed-dim": "#2ddbde",
+                    "on-primary-container": "#005354",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "surface-container-lowest": "#090f0f",
+                    "on-primary": "#003738",
+                    "primary-container": "#00ced1",
+                    "on-primary-fixed": "#002020",
+                    "surface-container-low": "#161d1d",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "inverse-primary": "#00696b",
+                    "tertiary-container": "#4bc5ff",
+                    "on-secondary-fixed": "#131b2e",
+                    "inverse-on-surface": "#2b3232",
+                    "surface": "#0e1515",
+                    "surface-dim": "#0e1515",
+                    "background": "#0e1515",
+                    "primary": "#47eaed",
+                    "secondary-container": "#3f465c",
+                    "surface-variant": "#2f3636",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#242b2b",
+                    "on-tertiary-fixed": "#001e2c",
+                    "inverse-surface": "#dde4e3",
+                    "on-tertiary-fixed-variant": "#004c69",
+                    "on-surface-variant": "#bac9c9",
+                    "surface-container-highest": "#2f3636",
+                    "error-container": "#93000a",
+                    "on-secondary": "#283044",
+                    "tertiary-fixed": "#c4e7ff",
+                    "outline-variant": "#3b4949",
+                    "tertiary": "#a4dcff",
+                    "on-error-container": "#ffdad6",
+                    "surface-tint": "#2ddbde",
+                    "primary-fixed": "#5af8fb",
+                    "surface-container": "#1a2121",
+                    "surface-bright": "#333b3a",
+                    "on-background": "#dde4e3",
+                    "on-tertiary-container": "#004f6d",
+                    "on-secondary-container": "#adb4ce",
+                    "outline": "#859493",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#004f51",
+                    "on-tertiary": "#00354a",
+                    "secondary": "#bec6e0",
+                    "tertiary-fixed-dim": "#7bd0ff",
+                    "secondary-fixed": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar_width": "260px",
+                    "container_padding": "2rem",
+                    "stack_sm": "0.5rem",
+                    "gutter": "1.5rem",
+                    "stack_md": "1rem",
+                    "sidebar_collapsed": "80px"
+            },
+            "fontFamily": {
+                    "status-number": ["JetBrains Mono"],
+                    "label-caps": ["JetBrains Mono"],
+                    "display-lg": ["Manrope"],
+                    "body-base": ["Inter"],
+                    "headline-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "status-number": ["14px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-base text-body-base bg-background min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- Desktop Navigation Drawer (Hidden on mobile) -->
+<aside class="hidden md:flex flex-col h-full py-6 px-4 bg-surface-variant/40 dark:bg-surface-variant/40 backdrop-blur-xl w-sidebar_width h-screen fixed left-0 top-0 z-40 border-r border-white/15 shadow-xl">
+<div class="mb-10 px-4">
+<h1 class="font-display-lg text-headline-md text-primary">MediCal</h1>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">event_repeat</span>
+<span>Calibration</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span>Compliance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 font-bold border-r-2 border-primary transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/10 px-4 flex items-center gap-4">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border border-primary/30" data-alt="A professional close-up portrait of a biomedical engineer in a clean clinical environment, wearing a white lab coat with subtle blue accents. The lighting is bright and high-tech, reflecting off medical-grade glass surfaces. The overall aesthetic is surgical, precise, and sophisticated, utilizing a palette of deep teals and sterile whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrM6I0zLKymQkzvCiWVt-PmOmUq2hoRsMPohl3O25_rKYwoKvbruRjEE80UxgeJDEcsq8hJWbPNB1c0owq1wEKsOjv6Khwd6GrhOGknqFGu7xAqMMTHACpY5Z8Q8e2ifRWf_YcbpXNScS1UB-LdcI08sQH3MGZwNoGOoo72KdzkMm-cSsnv8V7nZWH8vn1hfm6QtEdGzYgkZmJ6UYGF0uo7Jpn2bPFQbGyGvFckWqNkDvguHc9gywZjL-gduFUalomm8QixJNRVvoI"/>
+<div class="overflow-hidden">
+<p class="font-bold text-on-surface truncate">Dr. Aris Thorne</p>
+<p class="text-xs text-on-surface-variant truncate">Lead Engineer</p>
+</div>
+</div>
+</aside>
+<!-- Top App Bar (Mobile Only) -->
+<header class="md:hidden flex items-center justify-between px-gutter h-20 fixed top-0 left-0 right-0 z-30 bg-surface/40 backdrop-blur-md border-b border-white/10 shadow-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">menu</span>
+<h1 class="font-display-lg text-headline-md tracking-tight text-primary">MediCal Systems</h1>
+<div class="w-10 h-10 rounded-full border border-primary/30 bg-surface-container overflow-hidden">
+<img alt="Technician Profile" data-alt="A portrait of a healthcare professional in a dark, high-tech laboratory setting. Soft teal glows illuminate their profile against a backdrop of sophisticated diagnostic equipment. The mood is focused and authoritative, maintaining a high-contrast dark-mode aesthetic with surgical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJr3WqOn4VSyoIt0c8oYo5J4m_4xC7QGE9R-IV-yQqs1bBOkg7xeQ27bvCHAw-PhTY8JeXwxVeGE4uxjWrNg2HL1CM6Hw_Mz5m1QfsX57yrIo8x2GZwxiTStJ_JccxbLSaO4aGatYfCek8T9LAij2_DreM3wNsmPPoYFrOEiH1VyxnUXgTW1dVdyt4sxhEc5SrcskzgiPwYPYXpRG26iCant9gYiVqrR7w9k3gE8_Suanr5DWtB0goK4905EKsod7JL3lFwOGxeIqw"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-sidebar_width mt-20 md:mt-0 p-gutter md:p-10 max-w-5xl mx-auto w-full space-y-8">
+<!-- Page Title -->
+<section class="space-y-2">
+<p class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">System Configuration</p>
+<h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">Configuration &amp; Control</h2>
+</section>
+<!-- Bento Layout Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Profile & RBAC Panel -->
+<div class="md:col-span-4 glass-panel rounded-xl p-6 flex flex-col justify-between overflow-hidden relative group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full blur-3xl transition-all group-hover:bg-primary/10"></div>
+<div>
+<div class="w-20 h-20 rounded-xl overflow-hidden border border-white/20 mb-4">
+<img alt="Avatar" data-alt="Close up of a professional scientist in a dark room illuminated by computer screens displaying medical data. The lighting is dramatic and precise, highlighting a teal and dark gray color scheme. The visual style is sleek and cinematic, emphasizing reliability and technical mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB56iaMY5XFnm2cEZ3OTYJ3739SDKrHvczy83ODjpTxLjXGlCckNlDhYHD4HMzSsO_zdHhQlSWXJZXWLMgZCYzTatNEf5I19-IQurEGBCItWvuWK5L1D0pAKA7TWwA-YfeWofBi3bkdwBcYHC7xvnpISD07icLdA6b1VpM0cVONqU_FPddiVs1ITKLptQbb7KcFXVEl4iqqeP_MTdnnUmMyvWp5I9iLS_GEvPfVNiGKz11d-n0RVxLFAy8OpoOn6M7f8i6hCSG7U7v0"/>
+</div>
+<h3 class="font-headline-md text-on-surface">Dr. Aris Thorne</h3>
+<p class="text-on-surface-variant font-label-caps text-xs">Biomedical Operations</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/10 space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface-variant">System Role</span>
+<span class="px-3 py-1 bg-primary text-background font-bold text-xs rounded-full shadow-[0_0_15px_rgba(71,234,237,0.3)]">ADMIN</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-on-surface-variant">Access Level</span>
+<span class="font-status-number text-primary text-sm">Tier 4-Full</span>
+</div>
+</div>
+</div>
+<!-- Telegram Integration Panel -->
+<div class="md:col-span-8 glass-panel rounded-xl p-6 space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">send</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Telegram Bot Gateway</h3>
+<p class="text-sm text-on-surface-variant">Direct alerting system for mission-critical events</p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="space-y-2">
+<label class="font-label-caps text-xs text-primary">Telegram Bot Token</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors pr-12" type="password" value="734918237:AAFl-Hk9z2X8qM8-Lp9Vz_XjRk_A9yM2L"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant cursor-pointer hover:text-primary">visibility_off</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-xs text-primary">Admin Chat ID</label>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors" type="text" value="-1001847592301"/>
+</div>
+</div>
+</div>
+<!-- Notification Threshold Panel -->
+<div class="md:col-span-12 glass-panel rounded-xl p-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-1">
+<h3 class="font-headline-md text-on-surface">Calibration Notification Threshold</h3>
+<p class="text-sm text-on-surface-variant max-w-xl">Set the lead time for calibration expiry alerts. Notifications will be triggered when instruments fall within this day-count window.</p>
+</div>
+<div class="flex items-center gap-6 bg-surface-container-lowest/50 p-4 rounded-xl border border-white/5 min-w-[200px]">
+<div class="text-center">
+<p class="font-label-caps text-[10px] text-primary">THRESHOLD</p>
+<p class="font-status-number text-3xl text-primary-fixed-dim">14</p>
+<p class="text-[10px] text-on-surface-variant">DAYS</p>
+</div>
+<input class="flex-1 h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-primary" max="60" min="1" type="range" value="14"/>
+</div>
+</div>
+</div>
+<!-- Global Action Controls -->
+<div class="md:col-span-12 flex flex-col sm:flex-row gap-4 justify-end pt-4">
+<button class="px-8 py-3 rounded-lg border border-primary/30 text-primary font-bold hover:bg-primary/10 transition-all backdrop-blur-sm active:scale-95">
+                    Discard Changes
+                </button>
+<button class="px-10 py-3 rounded-lg bg-primary text-background font-bold shadow-[0_0_30px_rgba(71,234,237,0.2)] hover:shadow-[0_0_40px_rgba(71,234,237,0.4)] transition-all active:scale-95">
+                    Save Configuration
+                </button>
+</div>
+</div>
+<!-- System Logs Teaser (Glass Cards Layout) -->
+<section class="pt-10 space-y-4">
+<div class="flex items-center justify-between px-2">
+<h4 class="font-label-caps text-sm text-on-surface-variant">Recent System Events</h4>
+<a class="text-xs text-primary hover:underline" href="#">View Audit Log</a>
+</div>
+<div class="space-y-2">
+<div class="glass-panel py-3 px-6 rounded-lg flex items-center justify-between border-l-4 border-l-primary">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-sm text-primary">update</span>
+<p class="text-sm text-on-surface">Settings modified by <span class="font-bold">A. Thorne</span></p>
+</div>
+<p class="font-status-number text-xs text-on-surface-variant">09:42 AM</p>
+</div>
+<div class="glass-panel py-3 px-6 rounded-lg flex items-center justify-between border-l-4 border-l-tertiary">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-sm text-tertiary">notifications_active</span>
+<p class="text-sm text-on-surface">Telegram test notification <span class="text-tertiary">SUCCESSFUL</span></p>
+</div>
+<p class="font-status-number text-xs text-on-surface-variant">08:15 AM</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-variant/80 backdrop-blur-xl border-t border-white/10 flex items-center justify-around px-4 z-40">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-caps">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">biotech</span>
+<span class="text-[10px] font-label-caps">Inv</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="text-[10px] font-label-caps">Tasks</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-[10px] font-label-caps">Config</span>
+</button>
+</nav>
+</body></html>

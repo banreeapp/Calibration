@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-surface": "#dde4e3",
+                  "primary-fixed-dim": "#2ddbde",
+                  "on-primary-container": "#005354",
+                  "secondary-fixed-dim": "#bec6e0",
+                  "surface-container-lowest": "#090f0f",
+                  "on-primary": "#003738",
+                  "primary-container": "#00ced1",
+                  "on-primary-fixed": "#002020",
+                  "surface-container-low": "#161d1d",
+                  "on-secondary-fixed-variant": "#3f465c",
+                  "inverse-primary": "#00696b",
+                  "tertiary-container": "#4bc5ff",
+                  "on-secondary-fixed": "#131b2e",
+                  "inverse-on-surface": "#2b3232",
+                  "surface": "#0e1515",
+                  "surface-dim": "#0e1515",
+                  "background": "#0e1515",
+                  "primary": "#47eaed",
+                  "secondary-container": "#3f465c",
+                  "surface-variant": "#2f3636",
+                  "error": "#ffb4ab",
+                  "surface-container-high": "#242b2b",
+                  "on-tertiary-fixed": "#001e2c",
+                  "inverse-surface": "#dde4e3",
+                  "on-tertiary-fixed-variant": "#004c69",
+                  "on-surface-variant": "#bac9c9",
+                  "surface-container-highest": "#2f3636",
+                  "error-container": "#93000a",
+                  "on-secondary": "#283044",
+                  "tertiary-fixed": "#c4e7ff",
+                  "outline-variant": "#3b4949",
+                  "tertiary": "#a4dcff",
+                  "on-error-container": "#ffdad6",
+                  "surface-tint": "#2ddbde",
+                  "primary-fixed": "#5af8fb",
+                  "surface-container": "#1a2121",
+                  "surface-bright": "#333b3a",
+                  "on-background": "#dde4e3",
+                  "on-tertiary-container": "#004f6d",
+                  "on-secondary-container": "#adb4ce",
+                  "outline": "#859493",
+                  "on-error": "#690005",
+                  "on-primary-fixed-variant": "#004f51",
+                  "on-tertiary": "#00354a",
+                  "secondary": "#bec6e0",
+                  "tertiary-fixed-dim": "#7bd0ff",
+                  "secondary-fixed": "#dae2fd"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "sidebar_width": "260px",
+                  "container_padding": "2rem",
+                  "stack_sm": "0.5rem",
+                  "gutter": "1.5rem",
+                  "stack_md": "1rem",
+                  "sidebar_collapsed": "80px"
+          },
+          "fontFamily": {
+                  "status-number": ["JetBrains Mono"],
+                  "label-caps": ["JetBrains Mono"],
+                  "display-lg": ["Manrope"],
+                  "body-base": ["Inter"],
+                  "headline-md": ["Manrope"]
+          },
+          "fontSize": {
+                  "status-number": ["14px", {"lineHeight": "1", "fontWeight": "600"}],
+                  "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .glass-card {
+      background: rgba(47, 54, 54, 0.4);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .active-glow {
+      box-shadow: 0 0 15px 2px rgba(71, 234, 237, 0.1);
+    }
+    body {
+      background-color: #020617;
+      background-image: radial-gradient(at 0% 0%, rgba(0, 206, 209, 0.05) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(75, 197, 255, 0.05) 0px, transparent 50%);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-base text-on-surface">
+<!-- Mobile Top Bar -->
+<header class="w-full h-20 fixed top-0 left-0 z-30 bg-surface/40 dark:bg-surface/40 backdrop-blur-md border-b border-white/15 dark:border-white/10 shadow-sm flex items-center justify-between px-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<h1 class="font-display-lg text-headline-md tracking-tight text-primary dark:text-primary-fixed-dim">MediCal Systems</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/30">
+<img alt="Technician Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a biomedical engineer wearing a modern navy lab coat in a high-tech medical laboratory setting. The background is softly blurred with glowing blue equipment displays. The lighting is crisp and cool-toned, emphasizing professional reliability and technical expertise in a dark-mode surgical tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDbfP5-em6tZvWr5JOfZEv-XhL8dtWDvc1jV0w2XUC3lbttFZKL5nuDEgUVWi98an6SUIZjYVDRjUJZiGy2O0gifkwXUnhQrcvmGZlC4bQgHwAjB0dXpE1CrvuGm199QPAppWvfKYDmBWDBuC-IMSmKwpdklo0iAm9uBx6p74vLRY6Zvd6mA4k_XH9InzzsT2eeN6gV0YnXiEiu3cuskXM_Hy3d3bS_i66Yl9Fxkj1IzWrqnqRCnkxHec9F58cC_inWfAKx2hRIGJM"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-6 min-h-screen">
+<!-- Search and Filter Section -->
+<div class="mb-8">
+<div class="glass-card rounded-xl p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-base w-full text-on-surface placeholder:text-on-surface-variant/50" placeholder="Search devices by name or model..." type="text"/>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="tune">tune</span>
+</div>
+</div>
+<!-- Inventory List Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-2 mb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Device Inventory</h2>
+<span class="font-label-caps text-label-caps text-primary uppercase">24 Active Units</span>
+</div>
+<!-- Item 1: Expired Status -->
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 border-l-4 border-l-error">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="biomedical">biotech</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-base font-bold text-on-surface">Precision Infusion Pump</h3>
+<p class="font-body-base text-sm text-on-surface-variant">Model: ALARIS-8100-V4</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-error/10 border border-error/20">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-error">EXPIRED</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Last Calib</p>
+<p class="font-status-number text-status-number text-on-surface">Oct 12, 2023</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Serial Num</p>
+<p class="font-status-number text-status-number text-on-surface">SN-99201-B</p>
+</div>
+</div>
+</div>
+<!-- Item 2: Valid Status -->
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 border-l-4 border-l-primary active-glow">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="monitor_heart">monitor_heart</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-base font-bold text-on-surface">Patient Monitor Elite</h3>
+<p class="font-body-base text-sm text-on-surface-variant">Model: PH-MX800-REV3</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-caps text-label-caps text-primary">OPTIMAL</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Next Calib</p>
+<p class="font-status-number text-status-number text-on-surface">May 15, 2024</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Department</p>
+<p class="font-status-number text-status-number text-on-surface">ICU-Ward-4</p>
+</div>
+</div>
+</div>
+<!-- Item 3: Warning Status -->
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 border-l-4 border-l-tertiary-container">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="ecg">ecg</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-base font-bold text-on-surface">Electrocardiograph</h3>
+<p class="font-body-base text-sm text-on-surface-variant">Model: MAC-5500-HD</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-container/10 border border-tertiary-container/20">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="font-label-caps text-label-caps text-tertiary-container">DUE SOON</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Due In</p>
+<p class="font-status-number text-status-number text-tertiary-container">12 Days</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Location</p>
+<p class="font-status-number text-status-number text-on-surface">Cardiology Lab</p>
+</div>
+</div>
+</div>
+<!-- Item 4: Maintenance Status -->
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 border-l-4 border-l-secondary">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="ventilator">ventilator</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-base font-bold text-on-surface">Ventilator Pro Series</h3>
+<p class="font-body-base text-sm text-on-surface-variant">Model: PB-980-UNIVERSAL</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary">IN-TRANSIT</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Status Date</p>
+<p class="font-status-number text-status-number text-on-surface">Jan 22, 2024</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Technician</p>
+<p class="font-status-number text-status-number text-on-surface">S. Mitchell</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Add Device FAB -->
+<button class="fixed right-6 bottom-24 w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-2xl active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 600;">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface/40 backdrop-blur-xl border-t border-white/10 z-50 flex justify-around items-center py-4 px-2">
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-[10px] uppercase">Dashboard</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="biomedical" style="font-variation-settings: 'FILL' 1;">biotech</span>
+<span class="font-label-caps text-[10px] uppercase font-bold">Inventory</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="event_repeat">event_repeat</span>
+<span class="font-label-caps text-[10px] uppercase">Calib</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-label-caps text-[10px] uppercase">Compliance</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-[10px] uppercase">Settings</span>
+</div>
+</nav>
+</body></html>
