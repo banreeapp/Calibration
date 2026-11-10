@@ -32,6 +32,14 @@ import { NotificationModal } from './components/NotificationModal';
 import { initAuth, googleSignIn, getAccessToken } from './services/firebaseAuth';
 import { exportToGoogleSheets } from './services/googleSheetsService';
 import { sendTelegramAlert, formatCalibrationExpiringMessage } from './services/telegramService';
+import { 
+  testFirestoreConnection, 
+  seedFirestoreIfEmpty, 
+  subscribeToDevices, 
+  saveDeviceToFirestore, 
+  saveCalibrationRecordToFirestore, 
+  saveAuditLogToFirestore 
+} from './services/firestoreService';
 
 export default function App() {
   const [devices, setDevices] = useState<MedicalDevice[]>(initialDevices);
@@ -59,16 +67,34 @@ export default function App() {
   // Mobile Device Frame Preview mode toggle
   const [isMobileDeviceView, setIsMobileDeviceView] = useState(false);
 
-  // Initialize Firebase Auth listener on load
+  // Initialize Firebase Auth & Firestore live listener on load
   useEffect(() => {
     initAuth(
       (user, token) => {
-        console.log('Firebase Auth initialized for Google Workspace user:', user.email);
+        console.log('Firebase Auth initialized for user:', user.email);
       },
       () => {
-        // Not signed in yet or token expired
+        // Auth state ready
       }
     );
+
+    // Test Firestore database connection & seed initial data to project calibration-4bb47
+    testFirestoreConnection().then((connected) => {
+      if (connected) {
+        seedFirestoreIfEmpty(initialDevices, initialCalibrationRecords);
+      }
+    });
+
+    // Real-time Firestore sync
+    const unsubscribe = subscribeToDevices((cloudDevices) => {
+      if (cloudDevices && cloudDevices.length > 0) {
+        setDevices(cloudDevices);
+      }
+    });
+
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   // Play audio ping for alert
@@ -143,6 +169,11 @@ export default function App() {
   const handleSaveNewDevice = (newDevice: MedicalDevice) => {
     setDevices(prev => [newDevice, ...prev]);
 
+    // Save to Firestore project calibration-4bb47
+    saveDeviceToFirestore(newDevice).catch(err => {
+      console.warn('Firestore device save notice:', err);
+    });
+
     // Add audit log
     const newLog: AuditLogItem = {
       id: `log-${Date.now()}`,
@@ -155,6 +186,7 @@ export default function App() {
       integrityHash: `reg-${newDevice.id.replace('#', '')}`
     };
     setAuditLogs(prev => [newLog, ...prev]);
+    saveAuditLogToFirestore(newLog).catch(err => console.warn('Firestore log save notice:', err));
 
     // Check if auto-sync enabled
     if (settings.autoSyncGoogleSheets && sheetsUrl) {
@@ -166,6 +198,10 @@ export default function App() {
   const handleCompleteCalibration = (updatedDevice: MedicalDevice, newRecord: CalibrationRecord) => {
     setDevices(prev => prev.map(d => (d.id === updatedDevice.id ? updatedDevice : d)));
     setRecords(prev => [newRecord, ...prev]);
+
+    // Save to Firestore project calibration-4bb47
+    saveDeviceToFirestore(updatedDevice).catch(err => console.warn('Firestore device update notice:', err));
+    saveCalibrationRecordToFirestore(newRecord).catch(err => console.warn('Firestore record save notice:', err));
 
     // Add audit log
     const newLog: AuditLogItem = {
@@ -179,6 +215,7 @@ export default function App() {
       integrityHash: newRecord.verificationHash
     };
     setAuditLogs(prev => [newLog, ...prev]);
+    saveAuditLogToFirestore(newLog).catch(err => console.warn('Firestore log save notice:', err));
 
     // Auto-open certificate to view or print
     setSelectedDeviceForCertificate(updatedDevice);
@@ -204,6 +241,7 @@ export default function App() {
       integrityHash: `cfg-${Date.now().toString(36)}`
     };
     setAuditLogs(prev => [newLog, ...prev]);
+    saveAuditLogToFirestore(newLog).catch(err => console.warn('Firestore log save notice:', err));
   };
 
   // Select device from search/scan

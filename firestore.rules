@@ -1,0 +1,99 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net (Default-deny)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper Functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-#]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Validate Device schema
+    function isValidDevice(data) {
+      return data.id is string && data.id.size() <= 64 &&
+             data.name is string && data.name.size() <= 128 &&
+             data.model is string && data.model.size() <= 64 &&
+             data.serialNumber is string && data.serialNumber.size() <= 64 &&
+             data.facilityId is string && data.facilityId.size() <= 64 &&
+             data.status is string && data.status.size() <= 32;
+    }
+
+    // Validate Calibration Record schema
+    function isValidCalibrationRecord(data) {
+      return data.id is string && data.id.size() <= 64 &&
+             data.deviceId is string && data.deviceId.size() <= 64 &&
+             data.testDate is string && data.testDate.size() <= 32 &&
+             data.overallResult is string && data.overallResult.size() <= 32 &&
+             data.certificateNumber is string && data.certificateNumber.size() <= 64;
+    }
+
+    // Validate Audit Log schema
+    function isValidAuditLog(data) {
+      return data.id is string && data.id.size() <= 64 &&
+             data.timestamp is string && data.timestamp.size() <= 64 &&
+             data.actor is string && data.actor.size() <= 64 &&
+             data.action is string && data.action.size() <= 64;
+    }
+
+    // Validate Notification schema
+    function isValidNotification(data) {
+      return data.id is string && data.id.size() <= 64 &&
+             data.title is string && data.title.size() <= 128 &&
+             data.message is string && data.message.size() <= 256 &&
+             data.severity is string && data.severity.size() <= 32;
+    }
+
+    // 1. Devices Collection
+    match /devices/{deviceId} {
+      allow read: if true; // Public clinical read for QR Code scanning verification
+      allow create: if isSignedIn() && isValidId(deviceId) && isValidDevice(incoming());
+      allow update: if isSignedIn() && isValidId(deviceId) && isValidDevice(incoming());
+      allow delete: if isSignedIn() && isValidId(deviceId);
+    }
+
+    // 2. Calibration Records Collection
+    match /calibrationRecords/{recordId} {
+      allow read: if true; // Public clinical verification for calibration certificates
+      allow create: if isSignedIn() && isValidId(recordId) && isValidCalibrationRecord(incoming());
+      allow update: if isSignedIn() && isValidId(recordId) && isValidCalibrationRecord(incoming());
+      allow delete: if false; // Calibration certificates are legally immutable
+    }
+
+    // 3. System Settings
+    match /settings/{settingId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && isValidId(settingId);
+    }
+
+    // 4. Audit Logs (PDPA Immutable Trail)
+    match /auditLogs/{logId} {
+      allow read: if isSignedIn();
+      allow create: if isValidId(logId) && isValidAuditLog(incoming());
+      allow update: if false; // Immutable audit logs cannot be modified
+      allow delete: if false; // Immutable audit logs cannot be deleted
+    }
+
+    // 5. Notifications
+    match /notifications/{notificationId} {
+      allow read: if true;
+      allow create: if isSignedIn() && isValidId(notificationId) && isValidNotification(incoming());
+      allow update: if isSignedIn() && isValidId(notificationId);
+      allow delete: if isSignedIn() && isValidId(notificationId);
+    }
+  }
+}

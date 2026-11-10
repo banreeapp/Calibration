@@ -132,10 +132,12 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
             >
               <option value="all">ทุกสถานพยาบาลในอำเภอดอนพุด</option>
               <option value="donphut-hospital">โรงพยาบาลดอนพุด (รพช. 30 เตียง)</option>
-              <option value="donphut-subdistrict">รพ.สต.ดอนพุด</option>
+              <option value="donphut-subdistrict">PCU ดอนพุด</option>
               <option value="phailiu-subdistrict">รพ.สต.ไผ่หลิ่ว</option>
               <option value="banluang-subdistrict">รพ.สต.บ้านหลวง</option>
-              <option value="dongnoi-subdistrict">รพ.สต.ดงน้อย</option>
+              <option value="dongnoi-subdistrict">รพ.สต.ดงตะงาว</option>
+              <option value="banree-subdistrict">รพ.สต.บ้านรี</option>
+              <option value="nongnmon-subdistrict">รพ.สต.บ้านหนองมน</option>
             </select>
           </div>
 

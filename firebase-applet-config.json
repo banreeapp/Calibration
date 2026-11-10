@@ -1,11 +1,12 @@
 {
-  "projectId": "gen-lang-client-0888812856",
-  "appId": "1:852525899284:web:6c28c4f71037b306c9d101",
-  "apiKey": "AIzaSyCGeWycbPgCItK3z_cXpXPVUVHqsz5w0JU",
-  "authDomain": "gen-lang-client-0888812856.firebaseapp.com",
-  "storageBucket": "gen-lang-client-0888812856.firebasestorage.app",
-  "messagingSenderId": "852525899284",
+  "projectId": "calibration-4bb47",
+  "appId": "1:434851051066:web:8c5d494ee9c8a8aa73a703",
+  "apiKey": "AIzaSyCDQkKQQbOJvnF9QwdrzzGACY4kkhV0kr8",
+  "authDomain": "calibration-4bb47.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-medicalsystemsdo-1b726e90-39dd-4cb7-9b58-0b317f293691",
+  "storageBucket": "calibration-4bb47.firebasestorage.app",
+  "messagingSenderId": "434851051066",
   "measurementId": "",
-  "oAuthClientId": "852525899284-2chmbc73b62plbvptm6fb1oa52pgmio4.apps.googleusercontent.com",
+  "oAuthClientId": "434851051066-1qmt8p6mf55ddii40genb1066poju616.apps.googleusercontent.com",
   "recaptchaSiteKey": ""
 }

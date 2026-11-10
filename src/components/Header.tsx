@@ -66,6 +66,12 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Right Action Tools */}
       <div className="flex items-center gap-2 sm:gap-3">
+        {/* Firebase Connected Badge */}
+        <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#FFA000]/10 border border-[#FFA000]/30 text-[#FFCA28] text-[11px] font-mono-tech" title="Firebase Project: calibration-4bb47">
+          <span className="w-2 h-2 rounded-full bg-[#FFA000] animate-pulse"></span>
+          <span>Firebase: calibration-4bb47</span>
+        </div>
+
         {/* Google Sheets Sync Pill */}
         <div className="hidden lg:flex items-center gap-2">
           {sheetsUrl ? (

@@ -163,7 +163,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="mt-4 p-3 rounded-xl bg-white/[0.03] border border-white/5 space-y-2">
           <div className="flex items-center justify-between text-xs">
             <span className="text-[#bac9c9] text-[11px]">เครือข่ายสถานพยาบาล</span>
-            <span className="text-[#47eaed] font-mono-tech text-[10px]">5 แห่ง</span>
+            <span className="text-[#47eaed] font-mono-tech text-[10px]">7 แห่ง</span>
           </div>
           <div className="space-y-1 text-[11px] text-[#bac9c9]/80 font-light">
             <div className="flex items-center gap-1.5">
@@ -172,7 +172,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
             <div className="flex items-center gap-1.5 text-[10px] text-[#bac9c9]/60">
               <span className="w-1 h-1 rounded-full bg-white/40"></span>
-              <span className="truncate">รพ.สต. 4 แห่ง (ดอนพุด, ไผ่หลิ่ว, บ้านหลวง, ดงน้อย)</span>
+              <span className="truncate">PCU/รพ.สต. 6 แห่ง (ดอนพุด, ไผ่หลิ่ว, บ้านหลวง, ดงตะงาว, บ้านรี, หนองมน)</span>
             </div>
           </div>
         </div>

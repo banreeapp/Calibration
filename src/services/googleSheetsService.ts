@@ -136,7 +136,7 @@ export async function exportToGoogleSheets(
       ['Pending Calibration (<60 days)', pendingCount, 'Scheduled for service'],
       ['Expired / Out of Spec', expiredCount, 'CRITICAL - Urgent attention required'],
       ['District Calibration Compliance Rate', `${complianceRate}%`, 'Target > 90% (ISO 13485:2016)'],
-      ['District Facilities Covered', '5', 'รพ.ดอนพุด, รพ.สต.ดอนพุด, ไผ่หลิ่ว, บ้านหลวง, ดงน้อย'],
+      ['District Facilities Covered', '7', 'รพ.ดอนพุด, PCU ดอนพุด, ไผ่หลิ่ว, บ้านหลวง, ดงตะงาว, บ้านรี, หนองมน'],
       ['Last Synchronized By', 'MediCal Systems Automation', timestamp]
     ];
 

@@ -1,0 +1,118 @@
+{
+  "entities": {
+    "Device": {
+      "title": "Device",
+      "description": "Medical device asset details for Don Phut district health network",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 128 },
+        "nameTh": { "type": "string", "maxLength": 128 },
+        "model": { "type": "string", "maxLength": 64 },
+        "serialNumber": { "type": "string", "maxLength": 64 },
+        "manufacturer": { "type": "string", "maxLength": 64 },
+        "department": { "type": "string", "maxLength": 64 },
+        "facilityId": { "type": "string", "maxLength": 64 },
+        "facilityName": { "type": "string", "maxLength": 128 },
+        "room": { "type": "string", "maxLength": 128 },
+        "riskClass": { "type": "string", "maxLength": 64 },
+        "installDate": { "type": "string", "maxLength": 32 },
+        "lastCalibDate": { "type": "string", "maxLength": 32 },
+        "calibIntervalMonths": { "type": "number" },
+        "nextCalibDate": { "type": "string", "maxLength": 32 },
+        "daysRemaining": { "type": "number" },
+        "status": { "type": "string", "maxLength": 32 },
+        "safetyStandard": { "type": "string", "maxLength": 64 },
+        "technician": { "type": "string", "maxLength": 64 },
+        "qrCodeUrl": { "type": "string", "maxLength": 512 }
+      },
+      "required": ["id", "name", "model", "serialNumber", "facilityId", "status"]
+    },
+    "CalibrationRecord": {
+      "title": "CalibrationRecord",
+      "description": "Digital calibration record and electrical safety test conforming to IEC 62353",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "deviceId": { "type": "string", "maxLength": 64 },
+        "testDate": { "type": "string", "maxLength": 32 },
+        "nextDueDate": { "type": "string", "maxLength": 32 },
+        "standardRef": { "type": "string", "maxLength": 64 },
+        "testEquipment": { "type": "string", "maxLength": 128 },
+        "traceabilityId": { "type": "string", "maxLength": 64 },
+        "overallResult": { "type": "string", "maxLength": 32 },
+        "testedBy": { "type": "string", "maxLength": 64 },
+        "certifiedBy": { "type": "string", "maxLength": 64 },
+        "certificateNumber": { "type": "string", "maxLength": 64 },
+        "notes": { "type": "string", "maxLength": 512 }
+      },
+      "required": ["id", "deviceId", "testDate", "overallResult", "certificateNumber"]
+    },
+    "SystemSetting": {
+      "title": "SystemSetting",
+      "description": "Global configuration for notifications and integrations",
+      "type": "object",
+      "properties": {
+        "telegramBotToken": { "type": "string", "maxLength": 128 },
+        "adminChatId": { "type": "string", "maxLength": 64 },
+        "notificationThresholdDays": { "type": "number" },
+        "autoSyncGoogleSheets": { "type": "boolean" },
+        "audioAlertsEnabled": { "type": "boolean" },
+        "pdpaMaskingEnabled": { "type": "boolean" }
+      }
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Immutable log trail for actions taken on medical equipment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "timestamp": { "type": "string", "maxLength": 64 },
+        "actor": { "type": "string", "maxLength": 64 },
+        "role": { "type": "string", "maxLength": 32 },
+        "action": { "type": "string", "maxLength": 64 },
+        "details": { "type": "string", "maxLength": 256 },
+        "ipAddress": { "type": "string", "maxLength": 64 },
+        "integrityHash": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "timestamp", "actor", "action"]
+    },
+    "SystemNotification": {
+      "title": "SystemNotification",
+      "description": "Alert notification for expiring equipment or audits",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 128 },
+        "message": { "type": "string", "maxLength": 256 },
+        "timestamp": { "type": "string", "maxLength": 64 },
+        "severity": { "type": "string", "maxLength": 32 },
+        "deviceId": { "type": "string", "maxLength": 64 },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "title", "message", "severity"]
+    }
+  },
+  "firestore": {
+    "/devices/{deviceId}": {
+      "schema": { "$ref": "#/entities/Device" },
+      "description": "Medical device inventory records for Don Phut district facilities"
+    },
+    "/calibrationRecords/{recordId}": {
+      "schema": { "$ref": "#/entities/CalibrationRecord" },
+      "description": "Digital calibration and electrical safety test records"
+    },
+    "/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/SystemSetting" },
+      "description": "System settings including Telegram bot and notification threshold"
+    },
+    "/auditLogs/{logId}": {
+      "schema": { "$ref": "#/entities/AuditLog" },
+      "description": "Immutable audit trail logs for PDPA and compliance"
+    },
+    "/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/SystemNotification" },
+      "description": "Real-time alerts and notifications for equipment status"
+    }
+  }
+}

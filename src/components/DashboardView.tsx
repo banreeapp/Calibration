@@ -94,12 +94,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             onChange={(e) => setSelectedFacilityFilter(e.target.value)}
             className="bg-[#161d1d] border border-white/10 rounded-lg text-xs text-[#dde4e3] px-3 py-2.5 outline-none focus:border-[#47eaed] transition-colors"
           >
-            <option value="all">ทุกสถานพยาบาลในอำเภอดอนพุด (5 แห่ง)</option>
-            <option value="donphut-hospital">โรงพยาบาลดอนพุด (แม่ข่าย)</option>
-            <option value="donphut-subdistrict">รพ.สต.ดอนพุด</option>
+            <option value="all">ทุกสถานพยาบาลในอำเภอดอนพุด (7 แห่ง)</option>
+            <option value="donphut-hospital">โรงพยาบาลดอนพุด (รพช. 30 เตียง / แม่ข่าย)</option>
+            <option value="donphut-subdistrict">PCU ดอนพุด</option>
             <option value="phailiu-subdistrict">รพ.สต.ไผ่หลิ่ว</option>
             <option value="banluang-subdistrict">รพ.สต.บ้านหลวง</option>
-            <option value="dongnoi-subdistrict">รพ.สต.ดงน้อย</option>
+            <option value="dongnoi-subdistrict">รพ.สต.ดงตะงาว</option>
+            <option value="banree-subdistrict">รพ.สต.บ้านรี</option>
+            <option value="nongnmon-subdistrict">รพ.สต.บ้านหนองมน</option>
           </select>
 
           {/* Export Dropdown */}

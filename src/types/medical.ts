@@ -3,7 +3,9 @@ export type FacilityId =
   | 'donphut-subdistrict' 
   | 'phailiu-subdistrict' 
   | 'banluang-subdistrict' 
-  | 'dongnoi-subdistrict';
+  | 'dongnoi-subdistrict'
+  | 'banree-subdistrict'
+  | 'nongnmon-subdistrict';
 
 export interface Facility {
   id: FacilityId;

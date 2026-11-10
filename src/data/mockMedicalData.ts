@@ -11,7 +11,7 @@ import {
 export const facilities: Facility[] = [
   {
     id: 'donphut-hospital',
-    name: 'โรงพยาบาลดอนพุด',
+    name: 'โรงพยาบาลดอนพุด (รพช. 30 เตียง)',
     nameEn: 'Don Phut Community Hospital',
     type: 'Community Hospital (30 Beds)',
     location: 'ต.ดอนพุด อ.ดอนพุด จ.สระบุรี 18210',
@@ -22,8 +22,8 @@ export const facilities: Facility[] = [
   },
   {
     id: 'donphut-subdistrict',
-    name: 'รพ.สต.ดอนพุด',
-    nameEn: 'Don Phut Sub-district Health Promotion Hospital',
+    name: 'PCU ดอนพุด',
+    nameEn: 'Don Phut Primary Care Unit (PCU)',
     type: 'Sub-district Health Center (รพ.สต.)',
     location: 'หมู่ 1 ต.ดอนพุด อ.ดอนพุด จ.สระบุรี',
     district: 'ดอนพุด',
@@ -55,13 +55,35 @@ export const facilities: Facility[] = [
   },
   {
     id: 'dongnoi-subdistrict',
-    name: 'รพ.สต.ดงน้อย',
-    nameEn: 'Dong Noi Sub-district Health Promotion Hospital',
+    name: 'รพ.สต.ดงตะงาว',
+    nameEn: 'Dong Ta-Ngao Sub-district Health Promotion Hospital',
     type: 'Sub-district Health Center (รพ.สต.)',
-    location: 'หมู่ 4 ต.ดงน้อย อ.ดอนพุด จ.สระบุรี',
+    location: 'ต.ดงตะงาว อ.ดอนพุด จ.สระบุรี',
     district: 'ดอนพุด',
     province: 'สระบุรี',
     phone: '036-395555',
+    deviceCount: 4
+  },
+  {
+    id: 'banree-subdistrict',
+    name: 'รพ.สต.บ้านรี',
+    nameEn: 'Ban Ree Sub-district Health Promotion Hospital',
+    type: 'Sub-district Health Center (รพ.สต.)',
+    location: 'ต.บ้านรี อ.ดอนพุด จ.สระบุรี',
+    district: 'ดอนพุด',
+    province: 'สระบุรี',
+    phone: '036-395666',
+    deviceCount: 4
+  },
+  {
+    id: 'nongnmon-subdistrict',
+    name: 'รพ.สต.บ้านหนองมน',
+    nameEn: 'Ban Nong Mon Sub-district Health Promotion Hospital',
+    type: 'Sub-district Health Center (รพ.สต.)',
+    location: 'ต.บ้านหนองมน อ.ดอนพุด จ.สระบุรี',
+    district: 'ดอนพุด',
+    province: 'สระบุรี',
+    phone: '036-395777',
     deviceCount: 4
   }
 ];
@@ -625,7 +647,7 @@ export const initialDevices: MedicalDevice[] = [
     manufacturer: 'Yuwell Medical',
     department: 'Sub-district Primary Care',
     facilityId: 'dongnoi-subdistrict',
-    facilityName: 'รพ.สต.ดงน้อย',
+    facilityName: 'รพ.สต.ดงตะงาว',
     room: 'ศูนย์ยืมคืนอุปกรณ์การแพทย์ชุมชน',
     riskClass: 'Class II (Moderate Risk)',
     installDate: '2022-09-10',
@@ -652,6 +674,78 @@ export const initialDevices: MedicalDevice[] = [
       ]
     },
     qrCodeUrl: 'https://chart.googleapis.com/chart?cht=qr&chs=240x240&chl=RST-104-DONGNOI-SUBDISTRICT'
+  },
+  {
+    id: '#RST-105',
+    name: 'Omron HBP-1320 Vital Monitor',
+    nameTh: 'เครื่องวัดความดันโลหิตอัตโนมัติชนิดสอดแขน',
+    model: 'HBP-1320 Professional',
+    serialNumber: 'OMR-1320-BR1',
+    manufacturer: 'Omron Healthcare',
+    department: 'Sub-district Primary Care',
+    facilityId: 'banree-subdistrict',
+    facilityName: 'รพ.สต.บ้านรี',
+    room: 'ห้องคัดกรองปฐมภูมิ',
+    riskClass: 'Class II (Moderate Risk)',
+    installDate: '2023-01-15',
+    lastCalibDate: '2024-07-20',
+    calibIntervalMonths: 12,
+    nextCalibDate: '2025-07-20',
+    daysRemaining: 253,
+    status: 'Optimal',
+    safetyStandard: 'IEC 80601-2-30 / IEC 62353',
+    technician: 'Dr. Aris Thorne',
+    aging: {
+      equipmentHealthScore: 92,
+      expectedLifespanYears: 7,
+      currentAgeYears: 1.8,
+      remainingLifespanMonths: 62,
+      failureProbabilityNext12m: 4,
+      maintenanceCostTrend: 'Low',
+      recommendedAction: 'Keep in service',
+      mtbfHours: 7200,
+      degradationPoints: [
+        { year: 2023, health: 100 },
+        { year: 2024, health: 95 }
+      ]
+    },
+    qrCodeUrl: 'https://chart.googleapis.com/chart?cht=qr&chs=240x240&chl=RST-105-BANREE-SUBDISTRICT'
+  },
+  {
+    id: '#RST-106',
+    name: 'Mindray BeneHeart C1A AED',
+    nameTh: 'เครื่องฟื้นคืนคลื่นหัวใจด้วยไฟฟ้าอัตโนมัติ (AED)',
+    model: 'BeneHeart C1A Semi-Auto',
+    serialNumber: 'MR-C1A-NM1',
+    manufacturer: 'Mindray Bio-Medical',
+    department: 'Sub-district Primary Care',
+    facilityId: 'nongnmon-subdistrict',
+    facilityName: 'รพ.สต.บ้านหนองมน',
+    room: 'จุดบริการฉุกเฉินชุมชน 24 ชม.',
+    riskClass: 'Class III (Critical/Life Support)',
+    installDate: '2023-03-20',
+    lastCalibDate: '2024-05-18',
+    calibIntervalMonths: 12,
+    nextCalibDate: '2025-05-18',
+    daysRemaining: 190,
+    status: 'Optimal',
+    safetyStandard: 'IEC 60601-2-4 / IEC 62353',
+    technician: 'Dr. Aris Thorne',
+    aging: {
+      equipmentHealthScore: 95,
+      expectedLifespanYears: 8,
+      currentAgeYears: 1.6,
+      remainingLifespanMonths: 76,
+      failureProbabilityNext12m: 3,
+      maintenanceCostTrend: 'Low',
+      recommendedAction: 'Keep in service',
+      mtbfHours: 9500,
+      degradationPoints: [
+        { year: 2023, health: 100 },
+        { year: 2024, health: 97 }
+      ]
+    },
+    qrCodeUrl: 'https://chart.googleapis.com/chart?cht=qr&chs=240x240&chl=RST-106-NONGNMON-SUBDISTRICT'
   }
 ];
 
